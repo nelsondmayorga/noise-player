@@ -13,21 +13,21 @@ import {Subject} from 'rxjs';
 })
 export class AppComponent implements OnInit {
 
-  private YT: any;
-  private initialVideoId = 'DQls48KEKi4';
-  private player: any;
+  YT: any;
+  initialVideoId = 'DQls48KEKi4';
+  player: any;
 
-  private index = 0;
-  private listVideos = [];
-  private domListIdVideos: any;
-  private searchResults = [];
-  private currentVideo = {id: null, snippet: {title: 'Noise player'}};
-  private showModal = false;
-  private onPause = true;
+  index = 0;
+  listVideos = [];
+  domListIdVideos: any;
+  searchResults = [];
+  currentVideo = {id: null, snippet: {title: 'Noise player'}};
+  showModal = false;
+  onPause = true;
 
-  private search = new FormControl('');
+  search = new FormControl('');
 
-  private searchTerm$ = new Subject<string>();
+  searchTerm$ = new Subject<string>();
 
   constructor(public youtubeService: YoutubeService) {
 
