@@ -14,7 +14,7 @@ import {Subject} from 'rxjs';
 export class AppComponent implements OnInit {
 
   YT: any;
-  initialVideoId = 'DQls48KEKi4';
+  initialVideoId = 'WCO_-hfBr_A';
   player: any;
 
   index = 0;
@@ -161,6 +161,7 @@ export class AppComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.listVideos, event.previousIndex, event.currentIndex);
+    if (event.previousIndex === this.index) { this.index = event.currentIndex; }
     this.saveLocalStorage();
   }
 
