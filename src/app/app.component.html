@@ -29,14 +29,20 @@
   </div>
 
   <div class="content-list" >
-    <div class="input-box">
-      <div class="content">
-        <input class="search-bar" placeholder="Buscar..." type="text" (click)="openDropDown()">
+    <div style="display: flex;">
+      <div class="input-box" (click)="openDropDown()">
+        <div class="content">
+          <input class="search-bar" placeholder="Buscar..." type="text">
+        </div>
       </div>
+
+      <button (click)="deleteList()"  mat-icon-button color="warn" matTooltip="Borrar lista" matTooltipPosition="above" aria-label="Delete list">
+        <mat-icon class="control-buttons">delete_sweep</mat-icon>
+      </button>
     </div>
 
     <div cdkDropList (cdkDropListDropped)="drop($event)">
-      <div [ngClass]="{'current-video': video.id === currentVideo.id}" class="list-videos" *ngFor="let video of listVideos;  index as i" cdkDrag>
+      <div class="list-videos" *ngFor="let video of listVideos;  index as i" cdkDrag>
         <img [src]="video.snippet.thumbnails.default.url" width="50" alt="thumbnail">
         <p class="ml-20">
           <span [innerHTML]="video.snippet.title"></span>

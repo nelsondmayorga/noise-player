@@ -10,8 +10,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ClickOutsideDirective } from './directives/clickOutside/click-outside.directive';
 import { HighlightItemDirective } from './directives/highlightItem/highlight-item.directive';
-import {MatButtonModule, MatIconModule} from '@angular/material';
+
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -24,12 +27,13 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatIconModule,
     DragDropModule,
     MatButtonModule,
-    FormsModule,
-    ReactiveFormsModule
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

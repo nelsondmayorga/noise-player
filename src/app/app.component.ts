@@ -64,7 +64,6 @@ export class AppComponent implements OnInit {
   }
 
   onStateChange(e) {
-
     if (e.data === 0) {
       const newIndex = this.listVideos.findIndex(video => video.id === this.currentVideo.id);
 
@@ -90,6 +89,11 @@ export class AppComponent implements OnInit {
     this.getContentDetails(video['id']);
   }
 
+  deleteList() {
+    this.listVideos = [];
+    this.saveLocalStorage();
+  }
+
   getContentDetails(id: string) {
     this.youtubeService.getContentDetails(id).subscribe(data => {
       this.listVideos.map((video, index) => {
@@ -104,11 +108,15 @@ export class AppComponent implements OnInit {
       this.player.loadVideoById(this.listVideos[this.index].id);
       this.onPause = false;
       this.currentVideo = this.listVideos[this.index];
+      this.currentVideo['index'] = this.index;
     }
   }
 
   playVideoFromList(index: number) {
+    this.domListIdVideos = document.querySelectorAll('.list-videos');
+    this.domListIdVideos[this.index].classList.remove('current-video');
     this.index = index;
+    this.domListIdVideos[this.index].classList.add('current-video');
     this.playVideo();
   }
 
