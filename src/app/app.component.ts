@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   currentVideo = {id: null, snippet: {title: 'Noise player'}};
   showModal = false;
   onPause = true;
+  quotaExceeded = false;
 
   search = new FormControl('');
 
@@ -34,7 +35,12 @@ export class AppComponent implements OnInit {
     this.youtubeService.search(this.searchTerm$)
       .subscribe(listResults => {
         this.searchResults = listResults;
-      });
+      },
+      error => {
+        if (error.error.error.errors[0].reason  === 'quotaExceeded') { this.quotaExceeded = true; }
+        console.log('Error:', error);
+      }
+      );
   }
 
   ngOnInit() {
