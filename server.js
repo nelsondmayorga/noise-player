@@ -1,14 +1,16 @@
 const express = require('express');
 const path = require('path');
+const forceSsl = require('force-ssl-heroku');
 
 const app = express();
-var forceSsl = require('force-ssl-heroku');
+
+// Redirect to https
+app.use(forceSsl);
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/noise-player'));
 
-// Redirect to https
-app.use(forceSsl);
+
 
 // PathLocationStrategy
 app.get('/*', function(req,res) {
