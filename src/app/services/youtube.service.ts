@@ -17,7 +17,7 @@ export class YoutubeService {
 
   static regExp = / /g; // Regular expression that returns blank spaces
 
-  apiKey = 'AIzaSyBRS7oLeKhYh7Cm8K_T3Cw_lKvGD2rMAv0';
+  apiKey = 'AIzaSyDzj66LoaCW405BvrSkvH0Toke7MjTImMk';
   endPoint = 'https://www.googleapis.com/youtube/v3/search';
   endPointDetails = 'https://www.googleapis.com/youtube/v3/videos';
 

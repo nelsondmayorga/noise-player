@@ -91,6 +91,10 @@
       Excedimos nuestra cuota de búsquedas por día. Volveremos a las 2am.
     </div>
 
+    <div *ngIf="youtubeError">
+      Hay un error con la API de Youtube. Lo solucionaremos lo más pronto posible.
+    </div>
+
   </div>
 </div>
 

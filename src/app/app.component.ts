@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   showModal = false;
   onPause = true;
   quotaExceeded = false;
+  youtubeError = false;
 
   search = new FormControl('');
 
@@ -37,7 +38,11 @@ export class AppComponent implements OnInit {
         this.searchResults = listResults;
       },
       error => {
-        if (error.error.error.errors[0].reason  === 'quotaExceeded') { this.quotaExceeded = true; }
+        if (error.error.error.errors[0].reason  === 'quotaExceeded') {
+          this.quotaExceeded = true;
+          return;
+        }
+        this.youtubeError = true;
         console.log('Error:', error);
       }
       );
